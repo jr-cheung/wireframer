@@ -34,7 +34,7 @@ class EditScreen extends Component{
                         onDrag={this.handleDrag}
                         onStop={this.handleStop}>
                         <div>
-                        <div className="handle"></div>
+                        <div className="control_container"></div>
                         </div>
                     </Draggable>
                     
@@ -45,7 +45,35 @@ class EditScreen extends Component{
                         scale={1}
                         onStart={this.handleStart}
                         onDrag={this.handleDrag}
-                        onStop={this.handleStop}><div>Test</div></Draggable>
+                        onStop={this.handleStop}>
+                        <div>
+                        <div className="control_label">Test</div>
+                        </div>
+                    </Draggable>
+
+                    <Draggable
+                        defaultPosition={{x: 0, y: 0}}
+                        position={null}
+                        scale={1}
+                        onStart={this.handleStart}
+                        onDrag={this.handleDrag}
+                        onStop={this.handleStop}>
+                        <div>
+                        <div className="control_textfield">Test</div>
+                        </div>
+                    </Draggable>
+
+                    <Draggable
+                        defaultPosition={{x: 0, y: 0}}
+                        position={null}
+                        scale={1}
+                        onStart={this.handleStart}
+                        onDrag={this.handleDrag}
+                        onStop={this.handleStop}>
+                        <div>
+                        <div className="control_button">Test</div>
+                        </div>
+                    </Draggable>
                 </div>
                 <div className="column controls_prop_panel">
                     PROPERTIES

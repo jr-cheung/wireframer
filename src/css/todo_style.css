@@ -129,7 +129,8 @@ div.banner {
   font-size: 32pt !important;
 }
 
-.handle{
+.control_container{
+  display: inline-block;
   background-color:white;
   border-style: solid;
   border-color: black;
@@ -139,7 +140,28 @@ div.banner {
   z-index: 1;
 }
 
-.label{
+.control_label{
+  cursor: grab;
+  display: inline-block;
   z-index: 2;
-  background-color: gray;
+}
+
+.control_textfield{
+  cursor: grab;
+  z-index: 2;
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+  color: lightgray;
+}
+
+.control_button{
+  cursor: grab;
+  z-index: 2;
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+  background-color:silver;
+  text-align: center;
+  display: inline-block;
 }
