@@ -130,14 +130,16 @@ div.banner {
 }
 
 .control_container{
-  display: inline-block;
-  background-color:white;
+  position: relative;
+  cursor: grab;
+  z-index: 2;
   border-style: solid;
   border-color: black;
   border-width: 1px;
-  width: 500px;
-  height: 500px;
-  z-index: 1;
+  background-color: white;
+  color: lightgray;
+  width:500px;
+  height:500px;
 }
 
 .control_label{

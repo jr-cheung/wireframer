@@ -6,21 +6,31 @@ import { firestoreConnect } from 'react-redux-firebase'
 import { getFirestore } from 'redux-firestore'
 import Draggable from 'react-draggable'
 import { isAbsolute } from 'path'
+import Container from './Container'
 
 
-
- 
 
 class EditScreen extends Component{
     state = {
-        redirectDiagram: false,
+            redirectDiagram: false,
+            containers: [],
+            labels: [],
+            buttons: [],
+            textfields: [],
     }
+
+    createContainer = () =>{
+        this.setState(previousState => ({
+            containers: [...previousState.containers, <Container />]
+    }))};
+
+
 
     render(){
         return(
             <div className="row">
                 <div className="column controls_panel">
-                    <div className="add_container">
+                    <div className="add_container" onClick={this.createContainer}>
                         <div className= "add_container_pic"></div>
                         Container
                     </div>
@@ -49,17 +59,7 @@ class EditScreen extends Component{
 
 
                 <div className="column edit_panel">
-                    <Draggable
-                        defaultPosition={{x: 0, y: 0}}
-                        position={null}
-                        scale={1}
-                        onStart={this.handleStart}
-                        onDrag={this.handleDrag}
-                        onStop={this.handleStop}>
-                        <div>
-                        <div className="control_container"></div>
-                        </div>
-                    </Draggable>
+                    {this.state.containers}
 
                     <Draggable
                         defaultPosition={{x: 0, y: 0}}
