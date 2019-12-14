@@ -20,12 +20,35 @@ class EditScreen extends Component{
         return(
             <div className="row">
                 <div className="column controls_panel">
-                    CONTROLS
-                </div>
-                <div className="column edit_panel">
-                    EDIT
-                    
+                    <div className="add_container">
+                        <div className= "add_container_pic"></div>
+                        Container
+                    </div>
 
+                    <div className = "add_label">
+                        <div className = "add_label_pic">
+                            Prompt for Input:
+                        </div>
+                        Label
+                    </div>
+
+                    <div className = "add_button">
+                        <div className="add_button_pic">
+                            Submit
+                        </div>
+                        Button
+                    </div>
+
+                    <div className = "add_textfield">
+                        <div className = "add_textfield_pic">
+                            Input
+                        </div>
+                        Textfield
+                    </div>
+                </div>
+
+
+                <div className="column edit_panel">
                     <Draggable
                         defaultPosition={{x: 0, y: 0}}
                         position={null}
@@ -37,7 +60,6 @@ class EditScreen extends Component{
                         <div className="control_container"></div>
                         </div>
                     </Draggable>
-                    
 
                     <Draggable
                         defaultPosition={{x: 0, y: 0}}
@@ -75,6 +97,8 @@ class EditScreen extends Component{
                         </div>
                     </Draggable>
                 </div>
+
+                
                 <div className="column controls_prop_panel">
                     PROPERTIES
                 </div>

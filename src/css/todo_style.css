@@ -165,3 +165,76 @@ div.banner {
   text-align: center;
   display: inline-block;
 }
+
+.add_container{
+  cursor: pointer;
+  margin-bottom: 100px;
+  text-align: center;
+  font-weight: bold;
+}
+.add_label{
+  cursor: pointer;
+  margin-bottom: 100px;
+  text-align: center;
+  font-weight: bold;
+
+}
+.add_button{
+  cursor: pointer;
+  margin-bottom: 100px;
+  text-align: center;
+  font-weight: bold;
+}
+.add_textfield{
+  cursor: pointer;
+  margin-bottom: 100px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.add_container_pic{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background-color:white;
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+  width: 100px;
+  height: 50px;
+  border-radius: 3px;
+}
+
+.add_label_pic{
+  font-weight: normal;
+}
+
+.add_button_pic{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: silver;
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+  width: 100px;
+  height: 25px;
+  border-radius: 3px;
+  font-weight: normal;
+}
+
+.add_textfield_pic{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+  color: lightgray;
+  background-color: white;
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+  width: 150px;
+  height: 25px;
+  border-radius: 3px;
+  font-weight: normal;
+}
