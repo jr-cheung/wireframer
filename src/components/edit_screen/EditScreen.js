@@ -141,7 +141,7 @@ class EditScreen extends Component{
         }
         this.setState({labels: [...this.state.labels, newLabel]});
     };
-    
+
     createButton = () =>{
     };
     createTextfield = () =>{
@@ -181,19 +181,40 @@ class EditScreen extends Component{
                     {this.state.containers.map((container)=>(
                             <Container      
                                 controlObj = {container}
+                                idNumber={container.idNumber}
+                                key={container.key}
+
                                 background_color={container.background_color}
                                 border_color={container.border_color}
                                 border_radius={container.border_radius}
                                 border_thickness={container.border_thickness}
-                                idNumber={container.idNumber}
-                                key={container.key}
                                 top={container.top}
                                 right={container.right}
+
                                 processComponentSelectedContainer={this.processComponentSelectedContainer}
                             />
                     ))}
 
-                    {this.state.labels}
+                    {this.state.labels.map((label)=>(
+                        <Label
+                            controlObj = {label}
+                            idNumber={label.idNumber}
+                            key={label.key}
+
+                            background_color={label.background_color}
+                            border_color={label.border_color}
+                            border_thickness={label.border_thickness}
+                            border_radius={label.border_radius}
+                            top={label.top}
+                            right={label.right}
+                            text={label.text}
+                            text_color={label.text_color}
+                            font_size={label.font_size}
+
+                            processComponentSelectedLabel={this.processComponentSelectedLabel}
+                            />
+                    ))}
+
                     {this.state.buttons}
                     {this.state.textfields}
                 </div>
