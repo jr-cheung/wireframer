@@ -20,6 +20,7 @@ class EditScreen extends Component{
             labels: [],
             buttons: [],
             textfields: [],
+            componentSelected: null,
     }
 
     createContainer = () =>{
