@@ -7,6 +7,9 @@ import { getFirestore } from 'redux-firestore'
 import Draggable from 'react-draggable'
 import { isAbsolute } from 'path'
 import Container from './Container'
+import Label from './Label'
+import Button from './Button'
+import Textfield from './Textfield'
 
 
 
@@ -24,6 +27,20 @@ class EditScreen extends Component{
             containers: [...previousState.containers, <Container />]
     }))};
 
+    createLabel = () =>{
+        this.setState(previousState => ({
+            labels: [...previousState.labels, <Label />]
+    }))};
+
+    createButton = () =>{
+        this.setState(previousState => ({
+            buttons: [...previousState.buttons, <Button />]
+    }))};
+    createTextfield = () =>{
+        this.setState(previousState => ({
+            textfields: [...previousState.textfields, <Textfield />]
+    }))};
+
 
 
     render(){
@@ -34,22 +51,19 @@ class EditScreen extends Component{
                         <div className= "add_container_pic"></div>
                         Container
                     </div>
-
-                    <div className = "add_label">
+                    <div className = "add_label" onClick={this.createLabel}>
                         <div className = "add_label_pic">
                             Prompt for Input:
                         </div>
                         Label
                     </div>
-
-                    <div className = "add_button">
+                    <div className = "add_button" onClick={this.createButton}>
                         <div className="add_button_pic">
                             Submit
                         </div>
                         Button
                     </div>
-
-                    <div className = "add_textfield">
+                    <div className = "add_textfield" onClick={this.createTextfield}>
                         <div className = "add_textfield_pic">
                             Input
                         </div>
@@ -60,42 +74,12 @@ class EditScreen extends Component{
 
                 <div className="column edit_panel">
                     {this.state.containers}
+                    {this.state.labels}
+                    {this.state.buttons}
+                    {this.state.textfields}
 
-                    <Draggable
-                        defaultPosition={{x: 0, y: 0}}
-                        position={null}
-                        scale={1}
-                        onStart={this.handleStart}
-                        onDrag={this.handleDrag}
-                        onStop={this.handleStop}>
-                        <div>
-                        <div className="control_label">Test</div>
-                        </div>
-                    </Draggable>
 
-                    <Draggable
-                        defaultPosition={{x: 0, y: 0}}
-                        position={null}
-                        scale={1}
-                        onStart={this.handleStart}
-                        onDrag={this.handleDrag}
-                        onStop={this.handleStop}>
-                        <div>
-                        <div className="control_textfield">Test</div>
-                        </div>
-                    </Draggable>
 
-                    <Draggable
-                        defaultPosition={{x: 0, y: 0}}
-                        position={null}
-                        scale={1}
-                        onStart={this.handleStart}
-                        onDrag={this.handleDrag}
-                        onStop={this.handleStop}>
-                        <div>
-                        <div className="control_button">Test</div>
-                        </div>
-                    </Draggable>
                 </div>
 
                 
