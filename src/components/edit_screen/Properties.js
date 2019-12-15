@@ -2,15 +2,14 @@ import React from 'react';
 class Properties extends React.Component{
     
     handleTextChange=(event)=>{
-
+        this.props.processTextChange(event.target.value);
     }
     handleFontSizeChange=(event)=>{
-
+        this.props.processFontSizeChange(event.target.value);
     }
     handleTextColorChange=(event)=>{
-
+        this.props.processTextColorChange(event.target.value);
     }
-
     handleBackgroundColorChange=(event)=>{
         this.props.processBackgroundColorChange(event.target.value);
     }
@@ -47,6 +46,18 @@ class Properties extends React.Component{
         }
         else if (this.props.isLabel || this.props.isTextfield || this.props.isButton){
             return <div>
+            <div className = "text_container">Text
+                <input type="text" defaultValue={this.props.componentSelected.text} onChange={this.handleTextChange}></input>
+            </div>
+
+            <div className = "font_size_container">Font Size
+                <input type="number" defaultValue={this.props.componentSelected.font_size.slice(0, -2)} onChange={this.handleFontSizeChange} min={1}></input>
+            </div>
+
+            <div className = "text_color_container">Text Color
+                <input type="color" value={this.props.componentSelected.text_color} onChange={this.handleTextColorChange}></input>
+            </div>
+
             <div className = "background_color_container">Background Color
                 <input type="color" value={this.props.componentSelected.background_color} onChange={this.handleBackgroundColorChange}></input>
             </div>
@@ -67,7 +78,7 @@ class Properties extends React.Component{
         }
         
         else{
-            return(<div>Properties: Select a component</div>);
+            return(<div>Click a component to view properties</div>);
         }
     }
 

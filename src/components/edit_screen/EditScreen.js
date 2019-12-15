@@ -56,12 +56,25 @@ class EditScreen extends Component{
         });
     }
     processTextChange=(text)=>{
-
+        const component = this.state.componentSelected;
+        component.text = text;
+        this.setState({
+            redirectDiagram:true
+        });
     }
     processTextColorChange=(color)=>{
-
+        const component = this.state.componentSelected;
+        component.text_color = color;
+        this.setState({
+            redirectDiagram: true
+        })
     }
     processFontSizeChange=(px)=>{
+        const component = this.state.componentSelected;
+        component.font_size = px + "px";
+        this.setState({
+            redirectDiagram: true
+        });
 
     }
 
