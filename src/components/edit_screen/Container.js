@@ -2,6 +2,15 @@ import React from 'react';
 import Draggable from 'react-draggable'
 
 class Container extends React.Component {
+    
+    
+    handleSelect = () =>{
+        console.log("clicked");
+
+    }
+
+
+
     render() {
         return (
             <Draggable
@@ -12,7 +21,7 @@ class Container extends React.Component {
             onDrag={this.handleDrag}
             onStop={this.handleStop}>
             <div>
-            <div className="control_container"></div>
+            <div className="control_container" onClick={this.handleSelect}></div>
             </div>
         </Draggable>
         );

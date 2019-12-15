@@ -78,14 +78,40 @@ class EditScreen extends Component{
                     {this.state.labels}
                     {this.state.buttons}
                     {this.state.textfields}
-
-
-
                 </div>
 
                 
                 <div className="column controls_prop_panel">
-                    PROPERTIES
+
+                    <div className = "text_container">Text
+                        <input type="text"></input>
+                    </div>
+
+                    <div className = "font_size_container">Font Size
+                        <input type="number"></input>
+                    </div>
+
+                    <div className = "background_color_container">Background Color
+                        <input type="color"></input>
+                    </div>
+
+                    <div className = "border_color_container">Border Color
+                        <input type="color"></input>
+                    </div>
+                      
+                    <div className = "text_color_container">Text Color
+                        <input type="color"></input>
+                    </div>
+
+                    <div className = "border_thickness_container">Border Thickness
+                        <input type="number"></input>
+                    </div>
+
+                    <div className = "border_radius_container">Border Radius
+                        <input type="number"></input>
+                    </div>
+
+
                 </div>
             </div>
         );
