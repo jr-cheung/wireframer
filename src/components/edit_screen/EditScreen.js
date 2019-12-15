@@ -77,8 +77,6 @@ class EditScreen extends Component{
         });
 
     }
-
-
     processComponentSelectedContainer=(component)=>{
         this.setState({
             componentSelected: component,
@@ -144,7 +142,7 @@ class EditScreen extends Component{
             "top": 0,
             "right": 0,
 
-            "text": "Label",
+            "text": "Prompt for Input:",
             "font_size": "12px",
             "background_color": "#ffffff",
             "border_color": "#ffffff",
@@ -154,12 +152,44 @@ class EditScreen extends Component{
         }
         this.setState({labels: [...this.state.labels, newLabel]});
     };
-
     createButton = () =>{
+        const uuidv4 = require('uuid/v4');
+        var value = uuidv4();
+        const newButton={
+            "key": value,
+            "idNumber": value,
+            "top": 0,
+            "right": 0,
+
+            "text": "Submit",
+            "font_size": "12px",
+            "background_color": "#c0c0c0",
+            "border_color": "#000000",
+            "text_color": "#000000",
+            "border_thickness": "1px",
+            "border_radius": "2px",
+        }
+        this.setState({buttons: [...this.state.buttons, newButton]});
     };
     createTextfield = () =>{
-    };
+        const uuidv4 = require('uuid/v4');
+        var value = uuidv4();
+        const newTextfield={
+            "key": value,
+            "idNumber": value,
+            "top": 0,
+            "right": 0,
 
+            "text": "Input",
+            "font_size": "12px",
+            "background_color": "#ffffff",
+            "border_color": "#000000",
+            "text_color": "#c0c0c0",
+            "border_thickness": "1px",
+            "border_radius": "2px",
+        }
+        this.setState({textfields: [...this.state.textfields, newTextfield]});
+    };
 
     render(){
         return(
@@ -228,11 +258,48 @@ class EditScreen extends Component{
                             />
                     ))}
 
-                    {this.state.buttons}
-                    {this.state.textfields}
+                    {this.state.buttons.map((button)=>(
+                        <Button
+                            controlObj = {button}
+                            idNumber={button.idNumber}
+                            key={button.key}
+
+                            background_color={button.background_color}
+                            border_color={button.border_color}
+                            border_thickness={button.border_thickness}
+                            border_radius={button.border_radius}
+                            top={button.top}
+                            right={button.right}
+                            text={button.text}
+                            text_color={button.text_color}
+                            font_size={button.font_size}
+
+                            processComponentSelectedButton={this.processComponentSelectedButton}
+                            />
+                    ))}
+
+                    {this.state.textfields.map(textfield => (
+                        <Textfield
+                        controlObj = {textfield}
+                        idNumber={textfield.idNumber}
+                        key={textfield.key}
+
+                        background_color={textfield.background_color}
+                        border_color={textfield.border_color}
+                        border_thickness={textfield.border_thickness}
+                        border_radius={textfield.border_radius}
+                        top={textfield.top}
+                        right={textfield.right}
+                        text={textfield.text}
+                        text_color={textfield.text_color}
+                        font_size={textfield.font_size}
+
+                        processComponentSelectedTextfield={this.processComponentSelectedTextfield}
+                        />
+                    ))}
                 </div>
 
-                
+        
                 <div className="column controls_prop_panel">
                         <Properties 
                             componentSelected={this.state.componentSelected}
