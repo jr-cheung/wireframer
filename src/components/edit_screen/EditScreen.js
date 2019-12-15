@@ -124,7 +124,7 @@ class EditScreen extends Component{
             "key": value,
             "idNumber": value,
             "top": 0,
-            "right": 0,
+            "left": 0,
 
             "background_color": "#ffffff",
             "border_color": "#000000",
@@ -140,7 +140,7 @@ class EditScreen extends Component{
             "key": value,
             "idNumber": value,
             "top": 0,
-            "right": 0,
+            "left": 0,
 
             "text": "Prompt for Input:",
             "font_size": "12px",
@@ -159,7 +159,7 @@ class EditScreen extends Component{
             "key": value,
             "idNumber": value,
             "top": 0,
-            "right": 0,
+            "left": 0,
 
             "text": "Submit",
             "font_size": "12px",
@@ -178,7 +178,7 @@ class EditScreen extends Component{
             "key": value,
             "idNumber": value,
             "top": 0,
-            "right": 0,
+            "left": 0,
 
             "text": "Input",
             "font_size": "12px",
@@ -232,7 +232,7 @@ class EditScreen extends Component{
                                 border_radius={container.border_radius}
                                 border_thickness={container.border_thickness}
                                 top={container.top}
-                                right={container.right}
+                                left={container.left}
 
                                 processComponentSelectedContainer={this.processComponentSelectedContainer}
                             />
@@ -249,7 +249,7 @@ class EditScreen extends Component{
                             border_thickness={label.border_thickness}
                             border_radius={label.border_radius}
                             top={label.top}
-                            right={label.right}
+                            left={label.left}
                             text={label.text}
                             text_color={label.text_color}
                             font_size={label.font_size}
@@ -269,7 +269,7 @@ class EditScreen extends Component{
                             border_thickness={button.border_thickness}
                             border_radius={button.border_radius}
                             top={button.top}
-                            right={button.right}
+                            left={button.left}
                             text={button.text}
                             text_color={button.text_color}
                             font_size={button.font_size}
@@ -289,7 +289,7 @@ class EditScreen extends Component{
                         border_thickness={textfield.border_thickness}
                         border_radius={textfield.border_radius}
                         top={textfield.top}
-                        right={textfield.right}
+                        left={textfield.left}
                         text={textfield.text}
                         text_color={textfield.text_color}
                         font_size={textfield.font_size}

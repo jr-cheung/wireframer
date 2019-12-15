@@ -2,7 +2,12 @@ import React from 'react';
 import Draggable from 'react-draggable'
 
 class Button extends React.Component {
+    state = {}
+
     handleSelect = () =>{
+        
+
+
         const thisButton = this.props.controlObj;
         this.props.processComponentSelectedButton(thisButton);
     }
