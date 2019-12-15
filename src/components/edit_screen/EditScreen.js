@@ -23,15 +23,11 @@ class EditScreen extends Component{
             textfields: [],
             componentSelected: null,
             isContainer: false,
-            isButtonLabelTextfield: false
+            isButton: false,
+            isLabel: false,
+            isTextfield: false
     }
 
-    processTextChange=(value)=>{
-
-    }
-    processFontSizeChange=(size)=>{
-
-    }
     processBackgroundColorChange=(color)=>{
         const component = this.state.componentSelected;
         component.background_color = color;
@@ -46,9 +42,6 @@ class EditScreen extends Component{
             redirectDiagram: true
         });
     }
-    processTextColorChange=(color)=>{
-
-    }
     processBorderThicknessChange=(px)=>{
         const component = this.state.componentSelected;
         component.border_thickness = px +"px";
@@ -62,6 +55,14 @@ class EditScreen extends Component{
         this.setState({
             redirectDiagram: true
         });
+    }
+    processTextChange=(value)=>{
+
+    }
+    processTextColorChange=(color)=>{
+
+    }
+    processFontSizeChange=(size)=>{
 
     }
 
@@ -69,7 +70,9 @@ class EditScreen extends Component{
         this.setState({
             componentSelected: component,
             isContainer: true,
-            isButtonLabelTextfield: false,
+            isButton: false,
+            isLabel: false,
+            isTextfield: false
         });
     }
 
@@ -77,6 +80,22 @@ class EditScreen extends Component{
         const uuidv4 = require('uuid/v4');
         var value = uuidv4();
         const newContainer={
+            "key": value,
+            "top": 0,
+            "right": 0,
+            "background_color": "#ffffff",
+            "border_color": "#000000",
+            "border_thickness": "1px",
+            "border_radius": "2px",
+            "idNumber": value,
+        }
+        this.setState({containers: [...this.state.containers, newContainer]});
+    }
+
+    processComponentSelectedLabel = () =>{
+        const uuidv4 = require('uuid/v4');
+        var value = uuidv4();
+        const newLabel={
             "background_color": "#ffffff",
             "border_color": "#000000",
             "border_radius": "2px",
@@ -86,7 +105,6 @@ class EditScreen extends Component{
             "top": 0,
             "right": 0,
         }
-        this.setState({containers: [...this.state.containers, newContainer]});
     }
 
     createLabel = () =>{
@@ -160,7 +178,9 @@ class EditScreen extends Component{
                         <Properties 
                             componentSelected={this.state.componentSelected}
                             isContainer={this.state.isContainer}
-                            isButtonLabelTextfield={this.state.isButtonLabelTextfield}
+                            isButton={this.state.isButton}
+                            isLabel={this.state.isLabel}
+                            isTextfield={this.state.isTextfield}
                             processTextChange={this.processTextChange}
                             processFontSizeChange={this.processFontSizeChange}
                             processBackgroundColorChange={this.processBackgroundColorChange}
