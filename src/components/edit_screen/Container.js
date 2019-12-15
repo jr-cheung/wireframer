@@ -2,9 +2,26 @@ import React from 'react';
 import Draggable from 'react-draggable'
 
 class Container extends React.Component {
+
     handleSelect = () =>{
         const thisContainer = this.props.controlObj;
-        this.props.processComponentSelected(thisContainer);
+        this.props.processComponentSelectedContainer(thisContainer);
+    }
+
+    divStyle = () =>{
+        const thisContainer = this.props.controlObj;
+        return {position: 'relative',
+            width: '500px',
+            height: '500px',
+            cursor: 'grab',
+            zIndex: '2',
+            borderStyle: 'solid',
+        
+            backgroundColor: thisContainer.background_color,
+            borderColor: thisContainer.border_color,
+            borderWidth: thisContainer.border_thickness,
+            borderRadius: thisContainer.border_radius
+        };
     }
 
     render() {
@@ -17,7 +34,9 @@ class Container extends React.Component {
                 onDrag={this.handleDrag}
                 onStop={this.handleStop}>
                 <div>
-                <div className="control_container" onClick={this.handleSelect}></div>
+                <div    
+                      style={this.divStyle()}
+                      onClick={this.handleSelect}></div>
                 </div>
         </Draggable>
         );

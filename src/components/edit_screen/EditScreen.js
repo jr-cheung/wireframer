@@ -10,6 +10,7 @@ import Container from './Container'
 import Label from './Label'
 import Button from './Button'
 import Textfield from './Textfield'
+import Properties from './Properties'
 
 
 
@@ -21,11 +22,42 @@ class EditScreen extends Component{
             buttons: [],
             textfields: [],
             componentSelected: null,
+            isContainer: false,
+            isButtonLabelTextfield: false
     }
 
-    processComponentSelected=(component)=>{
+    processTextChange=(value)=>{
+
+    }
+    processFontSizeChange=(size)=>{
+
+    }
+    processBackgroundColorChange=(color)=>{
+        const component = this.state.componentSelected;
+        component.background_color = color;
         this.setState({
-            componentSelected: component
+            redirectDiagram: true
+        });
+
+    }
+    processBorderColorChange=(color)=>{
+
+    }
+    processTextColorChange=(color)=>{
+
+    }
+    processBorderThicknessChange=(px)=>{
+
+    }
+    processBorderRadiusChange=(px)=>{
+
+    }
+
+    processComponentSelectedContainer=(component)=>{
+        this.setState({
+            componentSelected: component,
+            isContainer: true,
+            isButtonLabelTextfield: false,
         });
     }
 
@@ -34,7 +66,7 @@ class EditScreen extends Component{
         var value = uuidv4();
         const newContainer={
             "background_color": "#ffffff",
-            "border_color": "#ff0000",
+            "border_color": "#000000",
             "border_radius": "2px",
             "border_thickness": "1px",
             "idNumber": value,
@@ -102,7 +134,7 @@ class EditScreen extends Component{
                                 key={container.key}
                                 top={container.top}
                                 right={container.right}
-                                processComponentSelected={this.processComponentSelected}
+                                processComponentSelectedContainer={this.processComponentSelectedContainer}
                             />
                     ))}
 
@@ -113,35 +145,18 @@ class EditScreen extends Component{
 
                 
                 <div className="column controls_prop_panel">
-
-                    <div className = "text_container">Text
-                        <input type="text"></input>
-                    </div>
-
-                    <div className = "font_size_container">Font Size
-                        <input type="number"></input>
-                    </div>
-
-                    <div className = "background_color_container">Background Color
-                        <input type="color"></input>
-                    </div>
-
-                    <div className = "border_color_container">Border Color
-                        <input type="color"></input>
-                    </div>
-                      
-                    <div className = "text_color_container">Text Color
-                        <input type="color"></input>
-                    </div>
-
-                    <div className = "border_thickness_container">Border Thickness
-                        <input type="number"></input>
-                    </div>
-
-                    <div className = "border_radius_container">Border Radius
-                        <input type="number"></input>
-                    </div>
-
+                        <Properties 
+                            componentSelected={this.state.componentSelected}
+                            isContainer={this.state.isContainer}
+                            isButtonLabelTextfield={this.state.isButtonLabelTextfield}
+                            processTextChange={this.processTextChange}
+                            processFontSizeChange={this.processFontSizeChange}
+                            processBackgroundColorChange={this.processBackgroundColorChange}
+                            processBorderColorChange={this.processBorderColorChange}
+                            processTextColorChange={this.processTextColorChange}
+                            processBorderThicknessChange={this.processBorderThicknessChange}
+                            processBorderRadiusChange={this.processBorderRadiusChange}
+                        />        
                 </div>
             </div>
         );
