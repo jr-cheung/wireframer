@@ -13,7 +13,6 @@ import Textfield from './Textfield'
 import Properties from './Properties'
 
 
-
 class EditScreen extends Component{
     state = {
             redirectDiagram: false,
@@ -56,15 +55,16 @@ class EditScreen extends Component{
             redirectDiagram: true
         });
     }
-    processTextChange=(value)=>{
+    processTextChange=(text)=>{
 
     }
     processTextColorChange=(color)=>{
 
     }
-    processFontSizeChange=(size)=>{
+    processFontSizeChange=(px)=>{
 
     }
+
 
     processComponentSelectedContainer=(component)=>{
         this.setState({
@@ -76,51 +76,76 @@ class EditScreen extends Component{
         });
     }
 
+    processComponentSelectedLabel = (component) =>{
+        this.setState({
+            componentSelected: component,
+            isContainer: false,
+            isButton: false,
+            isLabel: true,
+            isTextfield: false
+        });
+    }
+
+    processComponentSelectedButton = (component)=>{
+        this.setState({
+            componentSelected: component,
+            isContainer: false,
+            isButton: true,
+            isLabel: false,
+            isTextfield: false
+        });
+
+    }
+    processComponentSelectedTextfield=(component)=>{
+        this.setState({
+            componentSelected: component,
+            isContainer: false,
+            isButton: false,
+            isLabel: false,
+            isTextfield: true
+        });
+    }
+
     createContainer=()=>{
         const uuidv4 = require('uuid/v4');
         var value = uuidv4();
         const newContainer={
             "key": value,
+            "idNumber": value,
             "top": 0,
             "right": 0,
+
             "background_color": "#ffffff",
             "border_color": "#000000",
             "border_thickness": "1px",
             "border_radius": "2px",
-            "idNumber": value,
         }
         this.setState({containers: [...this.state.containers, newContainer]});
     }
-
-    processComponentSelectedLabel = () =>{
+    createLabel = () =>{
         const uuidv4 = require('uuid/v4');
         var value = uuidv4();
         const newLabel={
-            "background_color": "#ffffff",
-            "border_color": "#000000",
-            "border_radius": "2px",
-            "border_thickness": "1px",
-            "idNumber": value,
             "key": value,
+            "idNumber": value,
             "top": 0,
             "right": 0,
+
+            "text": "Label",
+            "font_size": "12px",
+            "background_color": "#ffffff",
+            "border_color": "#ffffff",
+            "text_color": "#000000",
+            "border_thickness": "1px",
+            "border_radius": "2px",
         }
-    }
-
-    createLabel = () =>{
-        this.setState(previousState => ({
-            labels: [...previousState.labels, <Label />]
-    }))};
-
+        this.setState({labels: [...this.state.labels, newLabel]});
+    };
+    
     createButton = () =>{
-        this.setState(previousState => ({
-            buttons: [...previousState.buttons, <Button />]
-    }))};
+    };
     createTextfield = () =>{
-        this.setState(previousState => ({
-            textfields: [...previousState.textfields, <Textfield />]
-    }))};
-
+    };
 
 
     render(){
