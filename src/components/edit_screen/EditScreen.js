@@ -38,18 +38,30 @@ class EditScreen extends Component{
         this.setState({
             redirectDiagram: true
         });
-
     }
     processBorderColorChange=(color)=>{
-
+        const component = this.state.componentSelected;
+        component.border_color = color;
+        this.setState({
+            redirectDiagram: true
+        });
     }
     processTextColorChange=(color)=>{
 
     }
     processBorderThicknessChange=(px)=>{
-
+        const component = this.state.componentSelected;
+        component.border_thickness = px +"px";
+        this.setState({
+            redirectDiagram: true
+        });
     }
     processBorderRadiusChange=(px)=>{
+        const component = this.state.componentSelected;
+        component.border_radius = px +"px";
+        this.setState({
+            redirectDiagram: true
+        });
 
     }
 
