@@ -29,7 +29,7 @@ class App extends Component {
               <Route path="/databaseTester" component={DatabaseTester} />
               <Route path="/register" component={RegisterScreen} />
               <Route path="/login" component={LoginScreen} />
-              <Route path="/edit" component={EditScreen} />
+              <Route path="/diagrams/:id" component={EditScreen} />
               <Route path="/todoList/:id/:id" component={ItemScreen} />
               <Route path="/todoList/:id" component={ListScreen} />
               <Route path="/:any" component={HomeScreen} />

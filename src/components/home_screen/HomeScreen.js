@@ -12,17 +12,20 @@ class HomeScreen extends Component {
         redirectList: false,
     }
 
-    handleNewList = (e) => {
+    handleNewDiagram = (e) => {
         const fireStore = getFirestore();
-        fireStore.collection('todoLists').add({
-            name: 'Unknown',
-            owner: 'Unknown',
+        fireStore.collection('diagrams').add({
+            name: 'Name',
+            owner: 'Owner',
             timestamp: Date.now(),
-            items: [],
+            containers: [],
+            labels: [],
+            buttons: [],
+            textfields: []
         }).then(document => {
             this.setState({redirectListID: document.id});
             this.setState({redirectList: true});
-            fireStore.collection('todoLists').orderBy("timestamp", "desc");
+            fireStore.collection('diagrams').orderBy("timestamp", "desc");
         });
     }
 
@@ -31,7 +34,7 @@ class HomeScreen extends Component {
             return <Redirect to="/login" />;
         }
         const timeToGoList = this.state.redirectList;
-        const todoListID = "todoList/" + this.state.redirectListID; 
+        const todoListID = "diagrams/" + this.state.redirectListID; 
         if (timeToGoList) {
             return <Redirect to={todoListID} />;
         }
@@ -48,7 +51,7 @@ class HomeScreen extends Component {
                         </div>
                         
                         <div className="home_new_list_container">
-                                <button className="home_new_list_button" onClick={this.handleNewList}>
+                                <button className="home_new_list_button" onClick={this.handleNewDiagram}>
                                     Create New Wireframe
                                 </button>
                         </div>
@@ -69,6 +72,6 @@ const mapStateToProps = (state) => {
 export default compose(
     connect(mapStateToProps),
     firestoreConnect([
-      { collection: 'todoLists', orderBy: ["timestamp", "desc"] },
+      { collection: 'diagrams', orderBy: ["timestamp", "desc"] },
     ]),
 )(HomeScreen);
