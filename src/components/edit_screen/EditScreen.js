@@ -23,6 +23,12 @@ class EditScreen extends Component{
             componentSelected: null,
     }
 
+    processComponentSelected=(component)=>{
+        this.setState({
+            componentSelected: component
+        });
+    }
+
     createContainer=()=>{
         const uuidv4 = require('uuid/v4');
         var value = uuidv4();
@@ -85,19 +91,21 @@ class EditScreen extends Component{
 
 
                 <div className="column edit_panel">
-                {this.state.containers.map((container)=>(
-                        <Container      
-                            controlObj = {container}
-                            background_color={container.background_color}
-                            border_color={container.border_color}
-                            border_radius={container.border_radius}
-                            border_thickness={container.border_thickness}
-                            idNumber={container.idNumber}
-                            key={container.key}
-                            top={container.top}
-                            right={container.right}
-                        />
+                    {this.state.containers.map((container)=>(
+                            <Container      
+                                controlObj = {container}
+                                background_color={container.background_color}
+                                border_color={container.border_color}
+                                border_radius={container.border_radius}
+                                border_thickness={container.border_thickness}
+                                idNumber={container.idNumber}
+                                key={container.key}
+                                top={container.top}
+                                right={container.right}
+                                processComponentSelected={this.processComponentSelected}
+                            />
                     ))}
+
                     {this.state.labels}
                     {this.state.buttons}
                     {this.state.textfields}
@@ -133,7 +141,6 @@ class EditScreen extends Component{
                     <div className = "border_radius_container">Border Radius
                         <input type="number"></input>
                     </div>
-
 
                 </div>
             </div>
