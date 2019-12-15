@@ -5,7 +5,7 @@ class Container extends React.Component {
     
     
     handleSelect = () =>{
-        console.log("clicked");
+        console.log("HANDLE SELECT");
 
     }
 

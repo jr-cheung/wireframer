@@ -23,10 +23,21 @@ class EditScreen extends Component{
             componentSelected: null,
     }
 
-    createContainer = () =>{
-        this.setState(previousState => ({
-            containers: [...previousState.containers, <Container />]
-    }))};
+    createContainer=()=>{
+        const uuidv4 = require('uuid/v4');
+        var value = uuidv4();
+        const newContainer={
+            "background_color": "#ffffff",
+            "border_color": "#ff0000",
+            "border_radius": "2px",
+            "border_thickness": "1px",
+            "idNumber": value,
+            "key": value,
+            "top": 0,
+            "right": 0,
+        }
+        this.setState({containers: [...this.state.containers, newContainer]});
+    }
 
     createLabel = () =>{
         this.setState(previousState => ({
@@ -74,7 +85,19 @@ class EditScreen extends Component{
 
 
                 <div className="column edit_panel">
-                    {this.state.containers}
+                {this.state.containers.map((container)=>(
+                        <Container      
+                            controlObj = {container}
+                            background_color={container.background_color}
+                            border_color={container.border_color}
+                            border_radius={container.border_radius}
+                            border_thickness={container.border_thickness}
+                            idNumber={container.idNumber}
+                            key={container.key}
+                            top={container.top}
+                            right={container.right}
+                        />
+                    ))}
                     {this.state.labels}
                     {this.state.buttons}
                     {this.state.textfields}
