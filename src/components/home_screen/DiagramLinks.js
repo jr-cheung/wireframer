@@ -12,7 +12,9 @@ class DiagramLinks extends React.Component {
             <div className="todo-lists section">
                 {diagrams && diagrams.map(diagram => (
                     <Link to={'/diagrams/' + diagram.id} key={diagram.id}>
-                        <DiagramCard diagram={diagram} />
+                        <DiagramCard 
+                        diagram={diagram}
+                        />
                     </Link>
                 ))}
             </div>
