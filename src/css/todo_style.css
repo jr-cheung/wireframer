@@ -252,3 +252,7 @@ div.banner {
   border-radius: 3px;
   font-weight: normal;
 }
+
+.delete_component{
+  cursor: pointer;
+}

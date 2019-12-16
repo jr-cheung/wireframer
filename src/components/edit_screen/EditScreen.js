@@ -29,6 +29,52 @@ class EditScreen extends Component{
             goHome: false
     }
 
+    removeElement(array, elem){
+        var index = array.indexOf(elem);
+        if (index > -1) {
+            array.splice(index, 1);
+        }
+    }
+
+    processDeleteComponent=()=>{
+        if (this.state.componentSelected !== null){
+            const component = this.state.componentSelected;
+            const key=component.key;
+            const containers = this.state.containers;
+            const labels = this.state.labels;
+            const buttons = this.state.buttons;
+            const textfields = this.state.textfields;
+            for (var i=0; i< containers.length; i++){
+                if (containers[i].key === key){
+                    this.removeElement(containers, containers[i]);
+                    this.setState({containers: containers});
+                    return;
+                }
+            }
+            for (var i=0; i< labels.length; i++){
+                if (labels[i].key === key){
+                    this.removeElement(labels, labels[i]);
+                    this.setState({labels: labels});
+                    return;
+                }
+            }
+            for (var i=0; i< buttons.length; i++){
+                if (buttons[i].key === key){
+                    this.removeElement(buttons, buttons[i]);
+                    this.setState({buttons: buttons});
+                    return;
+                }
+            }
+            for (var i=0; i< textfields.length; i++){
+                if (textfields[i].key === key){
+                    this.removeElement(textfields, textfields[i]);
+                    this.setState({textfields: textfields});
+                    return;
+                }
+            }
+        }
+    }
+
     processCloseWireframe=()=>{
         this.setState({
             goHome: true
@@ -360,7 +406,8 @@ class EditScreen extends Component{
                             processTextColorChange={this.processTextColorChange}
                             processBorderThicknessChange={this.processBorderThicknessChange}
                             processBorderRadiusChange={this.processBorderRadiusChange}
-                        />        
+                        />  
+                        <div className="delete_component" onClick={this.processDeleteComponent}>Delete Component</div>      
                 </div>
             </div>
         );

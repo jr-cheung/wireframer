@@ -78,7 +78,7 @@ class Properties extends React.Component{
         }
         
         else{
-            return(<div>Click a component to view properties</div>);
+            return(<div></div>);
         }
     }
 
