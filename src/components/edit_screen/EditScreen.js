@@ -15,6 +15,7 @@ import Properties from './Properties'
 
 class EditScreen extends Component{
     state = {
+            diagram: null,
             redirectDiagram: false,
             containers: [],
             labels: [],
@@ -25,6 +26,17 @@ class EditScreen extends Component{
             isButton: false,
             isLabel: false,
             isTextfield: false
+    }
+
+    processSaveWireframe=()=>{
+        const diagram = this.props.diagram;
+        const id = diagram.id;
+        const firestore = getFirestore();
+        firestore.collection('diagrams').doc(id).update({containers: this.state.containers});
+        firestore.collection('diagrams').doc(id).update({labels: this.state.labels});
+        firestore.collection('diagrams').doc(id).update({textfields: this.state.textfields});
+        firestore.collection('diagrams').doc(id).update({buttons: this.state.buttons});
+        // Change state to default and redirect to home
     }
 
     processBackgroundColorChange=(color)=>{
@@ -151,7 +163,7 @@ class EditScreen extends Component{
             "border_radius": "2px",
         }
         this.setState({labels: [...this.state.labels, newLabel]});
-    };
+    }
     createButton = () =>{
         const uuidv4 = require('uuid/v4');
         var value = uuidv4();
@@ -170,7 +182,7 @@ class EditScreen extends Component{
             "border_radius": "2px",
         }
         this.setState({buttons: [...this.state.buttons, newButton]});
-    };
+    }
     createTextfield = () =>{
         const uuidv4 = require('uuid/v4');
         var value = uuidv4();
@@ -191,10 +203,27 @@ class EditScreen extends Component{
         this.setState({textfields: [...this.state.textfields, newTextfield]});
     };
 
+    componentDidUpdate = (prevProps) =>{
+        if (this.props.diagram !== prevProps.diagram){
+            const diagram = this.props.diagram;
+            this.setState({
+                diagram: diagram,
+                containers: diagram.containers,
+                labels: diagram.labels,
+                buttons: diagram.buttons,
+                textfields: diagram.textfields,
+            });
+        }
+    }
+
     render(){
         return(
             <div className="row">
                 <div className="column controls_panel">
+                    <div className= "save_wireframe" onClick={this.processSaveWireframe}>
+                        SAVE
+                    </div>
+
                     <div className="add_container" onClick={this.createContainer}>
                         <div className= "add_container_pic"></div>
                         Container
@@ -321,9 +350,16 @@ class EditScreen extends Component{
     }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
+    const {id} = ownProps.match.params;
+    const {diagrams} = state.firestore.data;
+    const diagram = diagrams ? diagrams[id] : null;
+    if (diagram){
+        diagram.id = id;
+    }
     console.log(state);
     return {
+        diagram,
         auth: state.firebase.auth
     };
 };
