@@ -4,7 +4,7 @@ import { compose } from 'redux';
 import { NavLink, Redirect } from 'react-router-dom';
 import { firestoreConnect } from 'react-redux-firebase';
 import { getFirestore } from 'redux-firestore';
-import TodoListLinks from './TodoListLinks'
+import DiagramLinks from './DiagramLinks'
 
 class HomeScreen extends Component {
     state = {
@@ -15,15 +15,15 @@ class HomeScreen extends Component {
     handleNewDiagram = (e) => {
         const fireStore = getFirestore();
         fireStore.collection('diagrams').add({
-            name: 'Name',
+            name: 'New Wireframe',
             owner: 'Owner',
             timestamp: Date.now(),
             containers: [],
             labels: [],
             buttons: [],
             textfields: []
-        }).then(document => {
-            this.setState({redirectListID: document.id});
+        }).then((docRef)=>{
+            this.setState({redirectListID: docRef.id});
             this.setState({redirectList: true});
             fireStore.collection('diagrams').orderBy("timestamp", "desc");
         });
@@ -42,7 +42,7 @@ class HomeScreen extends Component {
             <div className="dashboard container">
                 <div className="row">
                     <div className="col s12 m4">
-                        <TodoListLinks />
+                        <DiagramLinks />
                     </div>
 
                     <div className="col s8">

@@ -25,7 +25,14 @@ class EditScreen extends Component{
             isContainer: false,
             isButton: false,
             isLabel: false,
-            isTextfield: false
+            isTextfield: false,
+            goHome: false
+    }
+
+    processCloseWireframe=()=>{
+        this.setState({
+            goHome: true
+        });
     }
 
     processSaveWireframe=()=>{
@@ -36,7 +43,7 @@ class EditScreen extends Component{
         firestore.collection('diagrams').doc(id).update({labels: this.state.labels});
         firestore.collection('diagrams').doc(id).update({textfields: this.state.textfields});
         firestore.collection('diagrams').doc(id).update({buttons: this.state.buttons});
-        // Change state to default and redirect to home
+        this.processCloseWireframe();
     }
 
     processBackgroundColorChange=(color)=>{
@@ -217,12 +224,22 @@ class EditScreen extends Component{
     }
 
     render(){
+        if (!this.props.auth.uid){
+            return <Redirect to="/login" />;
+        }
+        const redirectAndHome = this.state.goHome;
+        if (redirectAndHome){
+            return <Redirect to="/"/>
+        }
         return(
             <div className="row">
                 <div className="column controls_panel">
-                    <div className= "save_wireframe" onClick={this.processSaveWireframe}>
-                        SAVE
-                    </div>
+                <div className= "save_wireframe" onClick={this.processSaveWireframe}>
+                        Save
+                </div>
+                <div className= "close_wireframe" onClick={this.processCloseWireframe}>
+                        Close
+                </div>
 
                     <div className="add_container" onClick={this.createContainer}>
                         <div className= "add_container_pic"></div>

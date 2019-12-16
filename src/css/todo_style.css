@@ -170,11 +170,15 @@ div.banner {
 
 .save_wireframe{
   cursor: pointer;
-  margin-bottom: 50px;
   text-align: right;
-  font-weight: bold;
+  margin-bottom: 10px;
+}
 
-
+.close_wireframe{
+  position: relative;
+  cursor: pointer;
+  margin-bottom: 30px;
+  text-align: right;
 }
 .add_container{
   cursor: pointer;
